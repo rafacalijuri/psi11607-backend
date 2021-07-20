@@ -30,4 +30,15 @@ class UnidadeService{
 
     }
 
+    public function getPropostasUnidade(int $unidadeId){
+
+        try{
+            $unidades = $this->repository->getPropostasUnidade($unidadeId);
+            return response()->json($unidades, HttpResponse::HTTP_OK);
+        }catch (QueryException $e){
+            return Util::RetornoErroDB($e);
+        }
+
+    }
+
 }

@@ -13,7 +13,7 @@ class Proposta extends Model{
     public $timestamps = false;
 
     public function unidade(){
-        return $this->belongsTo(Unidade::class);
+        return $this->belongsTo(Unidade::class, "UnidadeId", "UnidadeId");
     }
 
 }

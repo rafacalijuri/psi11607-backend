@@ -15,4 +15,8 @@ class UnidadeController extends Controller{
         return $this->service->index();
     }
 
+    public function getPropostasUnidade(int $unidadeId){
+        return $this->service->getPropostasUnidade($unidadeId);
+    }
+
 }

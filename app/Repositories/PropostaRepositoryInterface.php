@@ -13,5 +13,6 @@ interface PropostaRepositoryInterface{
 
     public function getTotalPorUnidade();
     public function getContratadasMes();
+    public function getPropostasUnidade(int $unidadeId);
 
 }

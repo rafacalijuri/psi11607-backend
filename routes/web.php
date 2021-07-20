@@ -22,8 +22,10 @@ $router->group(['prefix'=>'api'], function() use ($router){
 
     $router->get('/unidades', 'UnidadeController@index');
     $router->get('/propostas', 'PropostaController@index');
-    $router->get('/propostas/{unidadeId}/total', 'PropostaController@getTotalUnidade');
     $router->get('/propostas/totalPorUnidade', 'PropostaController@getTotalPorUnidade');
     $router->get('/propostas/contratadasMes', 'PropostaController@getContratadasMes');
+    $router->get('/propostas/{unidadeId}', 'PropostaController@getPropostasUnidade');
+    $router->get('/propostas/{unidadeId}/total', 'PropostaController@getTotalUnidade');
+    $router->get('/{unidadeId}/propostas', 'UnidadeController@getPropostasUnidade');
     
 });

@@ -5,6 +5,8 @@ namespace App\Repositories;
 use App\Repositories\PropostaRepositoryInterface;
 use App\Models\Proposta as PropostaModel;
 
+use Illuminate\Support\Facades\DB;
+
 class PropostaRepositoryEloquent implements PropostaRepositoryInterface{
 
     private PropostaModel $model;
@@ -66,6 +68,33 @@ class PropostaRepositoryEloquent implements PropostaRepositoryInterface{
             ->groupByRaw('AnoMesContratada')
             ->take(6)
             ->get();    
+    }
+
+    public function getPropostasUnidade(int $unidadeId){
+
+        DB::enableQueryLog();
+        //return $this->model->with('unidade')->where('UnidadeId', "=", $unidadeId)->get();
+
+        return
+        $this->model->select('PropostaId', 'UnidadeId')
+        ->with(['unidade' => function ($query){
+            $query->select('Sigla', 'UnidadeId');
+        }])
+        ->whereHas('unidade', function ($query){
+            $query->where('Sigla', '=', 'REGOV/JN');
+        })
+        ->get();
+
+
+        /*
+        return
+            $this->model->with('unidade')->whereHas('unidade', function ($query){
+            $query->where('Sigla', '=', 'REGOV/JN');
+        })->get();
+        */
+
+        dd(DB::getQueryLog());
+        //return $unidadeId;
     }
 
 }

@@ -75,4 +75,13 @@ class PropostaService{
 
     }
 
+    public function getPropostasUnidade(int $unidadeId){
+        try{
+            return $this->repository->getPropostasUnidade($unidadeId);;
+        }catch (QueryException $e){
+            return Util::RetornoErroDB($e);
+        }
+
+    }
+
 }

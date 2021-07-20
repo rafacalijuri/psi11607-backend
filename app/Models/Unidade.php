@@ -12,7 +12,7 @@ class Unidade extends Model{
     public $timestamps = false;
 
     public function propostas(){
-        return $this->hasMany(Proposta::class);
+        return $this->hasMany(Proposta::class, "UnidadeId", "UnidadeId");
     }
 
 }

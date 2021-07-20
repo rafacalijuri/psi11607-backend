@@ -27,4 +27,8 @@ class PropostaController extends Controller{
         return $this->service->getContratadasMes();
     }
 
+    public function getPropostasUnidade(int $unidadeId){
+        return $this->service->getPropostasUnidade($unidadeId);
+    }
+
 }
